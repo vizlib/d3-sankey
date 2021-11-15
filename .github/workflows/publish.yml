@@ -18,12 +18,6 @@ jobs:
           find: "\"d3-sankey\""
           replace: "\"@vizlib/d3-sankey\""
           include: "package.json"
-      - name: Find and Replace contributors script
-        uses: jacobtomlinson/gha-find-replace@master
-        with:
-          find: "\"contributors:update\": \"git-authors-cli\""
-          replace: "\"contributors:update\": \"echo Vizlib\""
-          include: "package.json"
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
