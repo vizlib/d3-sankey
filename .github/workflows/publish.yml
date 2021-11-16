@@ -15,8 +15,8 @@ jobs:
       - name: Find and Replace NPM name
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "\"d3-sankey\""
-          replace: "\"@vizlib/d3-sankey\""
+          find: "d3-sankey"
+          replace: "@vizlib/d3-sankey"
           include: "package.json"
       - uses: actions/setup-node@v2
         with:
