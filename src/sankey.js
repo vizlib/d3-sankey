@@ -277,8 +277,12 @@ export default function Sankey(config) {
         target.y1 += dy;
         reorderNodeLinks(target);
       }
-      if (!config.newCollisionResolver) {
+
+      if (!config.customSorting) {
         if (sort === undefined) column.sort(ascendingBreadth);
+      }
+
+      if (!config.newCollisionResolver) {
         resolveCollisions(column, beta);
       }
 
@@ -303,9 +307,10 @@ export default function Sankey(config) {
         source.y1 += dy;
         reorderNodeLinks(source);
       }
-
-      if (!config.newCollisionResolver) {
+      if (!config.customSorting) {
         if (sort === undefined) column.sort(ascendingBreadth);
+      }
+      if (!config.newCollisionResolver) {
         resolveCollisions(column, beta);
       }
 
@@ -396,6 +401,7 @@ export default function Sankey(config) {
 
   // Returns the target.y0 that would produce an ideal link from source to target.
   function targetTop(source, target) {
+    console.log('hej');
     let y = config.newCoordsSystem ? source.y0 : source.y0 - (source.sourceLinks.length - 1) * py / 2;
     for (const {target: node, width} of source.sourceLinks) {
       if (node === target) break;
